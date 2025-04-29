@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>DIZWEB</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
+	</head>
+<body class="is-preload">
+
+    <center><h1>Inserção de Contribuição</h1>
+        {% set mensagens = get_flashed_messages() %}
+        {% if mensagens %}
+           <div>Registro Inserido com Sucesso!</div>
+        {% endif %}
+        <center>
+            <div class="container">
+                <div class="col-6 col-12-xsmall">
+                    <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>CARGO</th>
+                        <th>NOME</th>
+                        <th>RI</th>
+                
+                    </tr>
+                    {% for linha in dados %}
+                        <tr>
+                            <td>{{ linha[0] }}</td>
+                            <td>{{ linha[1] }}</td>
+                            <td>{{ linha[2] }}</td>
+                            <td>{{ linha[3] }}</td>
+                
+                        </tr>
+                    {% endfor %}
+                </table>
+        </div>
+        
+        <br>
+    <form action="/ins_mov_diz" method="post">
+        <label for="id_dizimista">Digite o ID do Dizimista</label>
+            <input type="text" id="id_dizimista" name="id_dizimista"/>
+            <br>
+
+        <label for="data">Data da Contribuição:</label>
+            <input type="date" type="date" id="data" name="data"/>
+            <br><br>
+
+        <label for="valor">Valor da Contribuição:</label>
+            <input type="number" min="0.00" max="10000.00" step="0.01" id="valor" name="valor"/>
+
+            <br><br><br>
+        <button type="submit">Cadastrar</button>
+        <br>
+
+    </div>
+    </form>
+
+    <form action="/vis_movimento" method="get">
+        <button type="submit">Voltar</button>
+    </form>
+    
+        <!-- Footer -->
+<section id="footer">
+    <ul class="icons">
+        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+    <ul class="copyright">
+        <li>&copy; DIZWEB</li><li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
+    </ul>
+</section>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>        
+   

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Contas a Receber</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
+	<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
+</head>
+	<body class="is-preload">
+		<center>
+		<h1>Contas a Pagar</h1>
+		{% set mensagens = get_flashed_messages() %}
+	 {% if mensagens %}
+		<div>Registro Inserido com Sucesso!</div>
+	 {% endif %}
+	 <div class="container">
+		<form action="/inserir_ctas_pagar" method="post">
+			<label for="num_titulo">Núm do Título:</label>		
+			<input type="number" id="num_titulo" name="num_titulo" >
+
+			<br>
+			<label for="recebedor">Recebedor:</label>		
+			<input type="text" id="recebedor" name="recebedor" >
+			
+			<br>
+			<label for="historico">Histórico:</label>		
+			<input type="text" id="historico" name="historico" >
+
+			<br>
+			<label for="emissao">Emissao:</label>		
+			<input type="date" id="emissao" name="emissao" >
+
+			<br><br>
+			<label for="vencimento">Vencimento do título:</label>		
+			<input type="date" id="vencimento" name="vencimento" >
+
+			<br><br>
+			<label for="valor">Valor:</label>		
+			<input type="valor" id="valor" name="valor" >
+
+			<br>
+
+			<button type="submit">Incluir</button>
+
+			<form action="/" method="get">
+				<button type="submit">Voltar</button>
+			</form>
+		</form>	
+	</div>
+
+	
+		</center>
+	<!-- Footer -->
+	<section id="footer">
+		<ul class="icons">
+			<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+			<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+			<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+			<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+			<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+		</ul>
+		<ul class="copyright">
+			<li>&copy; DIZWEB</li><li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
+		</ul>
+	</section>
+	
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

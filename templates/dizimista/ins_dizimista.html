@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>DIZWEB</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
+	</head>
+	<body class="is-preload">
+    <center>
+    <h1>Inserir Dizimista</h1>
+    {% set mensagens = get_flashed_messages() %}
+ {% if mensagens %}
+    <div>Registro Inserido com Sucesso!</div>
+ {% endif %}
+    <form action="/inserir" method="post">
+        <label for="cargo"><strong> Cargo:</strong></label>
+        <div class="container">
+                <div class="col-6 col-12-xsmall">
+                        <select id="cargo" name="cargo">
+                            <option selected disable value id="">Selecione</option>
+                            <option>PR.</option>
+                            <option>EV.</option>
+                            <option>MISS.</option>  
+                            <option>PB.</option>
+                            <option>DC.</option> 
+                            <option>DCª.</option> 
+                            <option>COOP.</option> 
+                            <option>COOPª.</option> 
+                        </select>
+            
+            <br>
+            <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            <br>
+            <label for="idade">RI do Dizimista:</label>
+                <input type="text" id="ri" name="ri" >
+            <br>
+            <label for="telefone">Telefone</label>
+                <input type="text" id="telefone" name="telefone" required>
+            <button type="submit">Inserir</button>
+        </div>
+    </div>
+</div>
+    </form>
+
+    <form action="/vis_dizimista" method="get">
+        <button type="submit">Voltar</button>
+    </form>
+
+    </center>
+<!-- Footer -->
+<section id="footer">
+    <ul class="icons">
+        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+    <ul class="copyright">
+        <li>&copy; DIZWEB</li><li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
+    </ul>
+</section>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>        
+   

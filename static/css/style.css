@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+#principal{
+    text-align: center;
+}
+
+body{
+    height: 100vh;
+}
+
+            
+.container {
+    margin: 0 auto;
+    max-width: calc(100% - 4em);
+    width: 60em;
+}
+
+    .container.xsmall {
+        width: 15em;
+    }
+
+    .container.small {
+        width: 30em;
+    }
+
+    .container.medium {
+        width: 45em;
+    }
+
+    .container.large {
+        width: 75em;
+    }
+
+    .container.xlarge {
+        width: 90em;
+    }
+
+    .container.max {
+        width: 100%;
+    }
+
+nav.menu-lateral{
+    width: 80px;
+    height: 100%;
+    background-color: #202020;
+    padding: 40px 0 40px 1%;
+    box-shadow: 3px 0 0 aqua;
+
+    position: fixed;  /*fixa o menu...*/
+    top:0 ;           /*...qndo desce...*/
+    left:0;           /*...o site*/
+    overflow: hidden; /*vai esconder as letras*/
+    transition: .5s;
+
+}
+
+nav.menu-lateral.expandir{
+    width: 300px;
+
+}
+.btn-expandir{
+    width: 100%;
+    padding-left: 10px;
+}
+
+.btn-expandir > i{
+    color:white;
+    font-size: 24px;
+    cursor: pointer;   /* indica q é clicavel*/
+}
+
+ul{
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item-menu{
+    transition: .2s;
+}
+
+ul li.ativo{
+    background-color: green;
+}
+
+ul li.item-menu:hover{
+    background-color: grey;
+}
+
+ul li.item-menu a{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 40px;
+}
+
+ul li.item-menu a .txt-link{
+    margin-left: 70px;
+    transition: .5s;
+    opacity: 0;
+}
+
+nav.menu-lateral.expandir .txt-link{
+    margin-left: 40px;
+    opacity: 1;
+
+
+}
+
+ul li.item-menu a .icon > i{
+    font-size: 30px;
+    margin-left: 15px;
+}
+
+/* #footer { */
+    /* padding: 6em 0 6em 0 ; */
+    /* background-color: #4686a0; */
+    /* color: rgba(255, 255, 255, 0.75); */
+    /* background-attachment: fixed,							fixed,							fixed; */
+    /* background-image: url("images/overlay2.png"), url("images/overlay4.svg"), linear-gradient(45deg, #4361c2, #4fa49a 50%, #9dc66b 95%); */
+    /* background-position: top left,						center center,					center center; */
+    /* background-size: auto,							cover,							cover; */
+    /* text-align: center;      */
+    /* position: fixed; */
+    /* bottom: 0; */
+    /* width: 100%; */
+      /* } */
+/*
+#footer {
+  padding: 6em 0 6em 0;
+  background-color: #4686a0;
+  color: rgba(255, 255, 255, 0.75);
+  background-image: url("images/overlay2.png"), url("images/overlay4.svg"), linear-gradient(45deg, #4361c2, #4fa49a 50%, #9dc66b 95%);
+  background-position: top left, center center, center center;
+  background-size: auto, cover, cover;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 80px; /* Espaço reservado para o menu lateral */
+/*  width: calc(100% - 80px); /* Largura ajustada ao restante da tela */
+/*  z-index: 1; /* Garantir que o footer não fique atrás de outros elementos */
+/*  transition: .5s;
+/*}
+/*
+/*#footer:hover {
+/*    left: 300px; /* Espaço reservado para o menu lateral */
+/*    width: calc(100% - 300px); /* Largura ajustada ao restante da tela */
+/*    z-index: 1; /* Garantir que o footer não fique atrás de outros elementos */
+/*}
+
+/* Footer com menu recolhido */
+#footer {
+    padding: 6em 0 6em 0;
+    background-color: #4686a0;
+    color: rgba(255, 255, 255, 0.75);
+    background-image: url("images/overlay2.png"), url("images/overlay4.svg"), linear-gradient(45deg, #4361c2, #4fa49a 50%, #9dc66b 95%);
+    background-position: top left, center center, center center;
+    background-size: auto, cover, cover;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 80px; /* Espaço inicial do menu recolhido */
+    width: calc(100% - 80px);
+    transition: .5s; /* Suavidade na transição */
+    z-index: 1; /* Garante que o footer não sobreponha o menu */
+}
+
+/* Quando o menu lateral está expandido */
+nav.menu-lateral.expandir + #footer {
+    left: 300px; /* Ajusta a posição do footer */
+    width: calc(100% - 300px); /* Reduz a largura corretamente */
+}
+
+
+#principal {
+    transition: margin-left 0.3s ease-in-out;
+    margin-left: 80px; /* Espaço inicial */
+}
+
+#principal h2 {
+    font-size: 3rem; /* Aumenta o tamanho do texto */
+    font-weight: bold; /* Deixa em negrito */
+    text-transform: uppercase; /* Deixa o texto em maiúsculas */
+    letter-spacing: 2px; /* Dá um espaçamento entre as letras */
+    margin-top: 150px;
+    font-size: 75px;
+}
+
+#principal p {
+    font-size: 1.5rem;
+
+}
+/* Quando o menu está expandido */
+nav.menu-lateral.expandir + #principal {
+    margin-left: 300px;
+}
+
+

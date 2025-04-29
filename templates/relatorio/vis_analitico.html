@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+		<title>DIZWEB</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
+	</head>
+<body>
+    
+    <center><h1 id="vis_sintent"> Visualização de contribuição Analítica</h1></center>
+
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+       <div><center>Atualizado com Sucesso!</center></div>
+    {% endif %}
+       <br> <br> <br>
+
+    <div class="table-wrapper">
+        <div class="container">
+            <table>
+                <thead>
+                <tr>
+                    <th>DATA</th>
+                    <th>CARGO</th>
+                    <th>NOME</th>
+                    <th>VALOR</th>
+                    <th>RI</th>
+                </tr>
+                </thead>
+                <tbody>
+            {% for linha in dados %}
+                <tr>
+                    <td>{{ linha[0] }}</td>
+                    <td>{{ linha[1] }}</td>
+                    <td>{{ linha[2] }}</td>
+                    <td>{{ linha[3] }}</td>
+                    <td>{{ linha[4] }}</td>
+                </tr>
+                </tbody>
+            {% endfor %}
+                <tfoot id="tfootanalitco">
+                    <tr>
+                        <th>TOTAL</th>
+                        {% for linhas in dados_totalconsult %}
+                        <td colspan="4">{{ linhas.TOTAL }}</td>
+                    </tr>
+                    {% endfor %}
+                </tfoot>
+            </table>
+        <form action="/" method="get">
+            <button type="submit">Voltar</button>
+        </form>
+        
+        </div>
+    </div>
+
+    
+</body>
+</html>

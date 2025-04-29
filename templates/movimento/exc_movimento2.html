@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>DIZWEB</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
+	</head>
+<body class="is-preload">
+    
+    <center><h1 id="vis_movimento"> Exclusão de movimentos</h1></center>
+
+
+    {% set mensagens = get_flashed_messages() %}
+ {% if mensagens %}
+    <div><center>Excluído com Sucesso!</center></div>
+ {% endif %}
+    <br> <br> <br>
+   
+    
+    <center>
+        <div class="container">
+            <table>
+            <tr>
+                <th>ID</th>
+                <th>ID_DIZIMISTA</th>
+                <th>VALOR</th>
+                <th>DATA</th>
+                <th>NOME</th>
+        
+            </tr>
+            {% for linha in dados %}
+                <tr>
+                    <td>{{ linha[0] }}</td>
+                    <td>{{ linha[1] }}</td>
+                    <td>{{ linha[2] }}</td>
+                    <td>{{ linha[3] }}</td>
+                    <td>{{ linha[4] }}</td>
+       
+                </tr>
+            {% endfor %}
+            </table>
+            </div>
+        </div>
+
+        <div class="container">
+            <label for="exclusao">Digite o ID do movimento que será deletado:</label>
+            <form action="/exclusao_mov2" method="post">
+                <input type="text" id="exclusao_id_mov" name="exclusao_id_mov" required>
+                <button type="submit">Excluir</button>
+            </form>
+        </div>
+
+        <form action="/exc_movimento" method="get">
+            <button type="submit">Voltar</button>
+        </form>
+
+   <!-- Footer -->
+   <section id="footer">
+    <ul class="icons">
+        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+    <ul class="copyright">
+        <li>&copy; DIZWEB</li><li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
+    </ul>
+</section>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+   </center>
+   
+</body>
+</html>

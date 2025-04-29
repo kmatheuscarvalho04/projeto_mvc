@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>DIZWEB</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
+	</head>
+	<body class="is-preload">
+    
+<body>
+
+            <center><h1 id="alt_dizimista"> Alteração de Dizimista</h1></center>
+    
+    <br>
+    <center>
+        <div class="container">
+            <div class="table-wrapper">
+                <table>
+                    <th>ID</th>
+                    <th>CARGO</th>
+                    <th>NOME</th>
+                    <th>RI</th>
+            
+                </tr>
+                {% for i in dados %}
+                    <tr>
+                        <td>{{ i[0] }}</td>
+                        <td>{{ i[1] }}</td>
+                        <td>{{ i[2] }}</td>
+                        <td>{{ i[3] }}</td>
+            
+                    </tr>
+                {% endfor %}
+                
+        </table>
+        <br>
+
+    <form action="/alteracao" method="post">
+        <label for="alteracao">Digite o ID ou o RI do usuário que será alterar:</label><br>
+        <center><input type="text" id="id_ou_ri" name="id_ou_ri" required></center>
+        <br>
+        <label for="alteracao2">Selecione o que será alterado:</label>
+        <center><select id="campo" name="campo">
+            <option selected disable value id="" ><center>Selecione</center></option>
+            <option>CARGO</option>
+            <option>NOME</option>
+            <option>RI</option>  
+         </select></center>
+         <br>
+        <label for="alteracao3">Preencha o conteúdo que será colocado:</label>
+        <center><input type="text" id="alteracao" name="alteracao" required></center>
+        <center><button type="submit">Alterar</button></center>
+        </div>
+    </div>
+    </form>
+    
+   <!-- Footer -->
+   <section id="footer">
+    <ul class="icons">
+        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+    <ul class="copyright">
+        <li>&copy; DIZWEB</li><li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
+    </ul>
+</section>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+   </center>
+   
+</body>
+</html>

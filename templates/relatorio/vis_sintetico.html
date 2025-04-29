@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+		<title>DIZWEB</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
+	</head>
+<body>
+    
+    <center><h1 id="vis_sintent"> Visualização de contribuição Sintetica</h1></center>
+
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+       <div><center>Atualizado com Sucesso!</center></div>
+    {% endif %}
+       <br> <br> <br>
+
+    <div class="table-wrapper">
+        <div class="container">
+                <table>
+                <!-- <th>ID</th> -->
+                <th>CARGO</th>
+                <th>NOME</th>
+                <th>RI</th>
+        
+            </tr>
+            {% for linha in dados %}
+                <tr>
+                    <!-- <td>{{ linha.ID }}</td> -->
+                    <td>{{ linha[0] }}</td>
+                    <td>{{ linha[1] }}</td>
+                    <td>{{ linha[2] }}</td>
+        
+                </tr>
+            {% endfor %}
+        </table>
+
+        <form action="/" method="get">
+            <button type="submit">Voltar</button>
+        </form>
+        
+        </div>
+    </div>
+
+    
+</body>
+</html>
