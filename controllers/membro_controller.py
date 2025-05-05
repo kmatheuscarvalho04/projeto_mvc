@@ -20,3 +20,16 @@ def inserir():
         flash("Registro inserido com sucesso!")
         return redirect(url_for('membro.visualizar'))
     return render_template('ins_dizimista.html')
+
+
+@bp_membro.route('/alt_dizimista', methods=['GET', 'POST'])
+def alteracao():
+    if request.method == 'POST':
+        membro.alterar_membro(
+            request.form['id_ou_ri'],
+            request.form['campo'],
+            request.form['conteudo'],
+        )
+        flash("Registro alterado com sucesso!")
+        return redirect(url_for('membro.visualizar'))
+    return render_template('vis_dizimista.html')

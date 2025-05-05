@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Gestão Ministerial - Sistema</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename = 'css/style.css') }}" />
-    <script src='main.js'></script>
+    
+    <!-- Conexão prévia com o Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap">
 
+    <!-- Estilos principais -->
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename = 'css/style.css') }}" />
+    
+    <!-- Ícones do Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <!-- Scripts -->
+    <script defer src="{{ url_for('static', filename = 'js/menu.js') }}"></script>
+    <script defer src="{{ url_for('static', filename = 'js/expandir.js') }}"></script>
+    <script defer src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+    <script defer src="{{ url_for('static', filename = 'js/jquery.scrolly.min.js') }}"></script>
+    <script defer src="{{ url_for('static', filename = 'js/browser.min.js') }}"></script>
+    <script defer src="{{ url_for('static', filename = 'js/breakpoints.min.js') }}"></script>
+    <script defer src="{{ url_for('static', filename = 'js/util.js') }}"></script>
+    <script defer src="{{ url_for('static', filename = 'js/main.js') }}"></script>
+    <script defer src="{{ url_for('static', filename = 'js/transicao.js') }}"></script>
 </head>
 <body>
 
-    <nav class="menu-lateral {% if menu_expandido %}expandir{% endif %}">
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral {% if menu_expandido %}expandir{% endif %}" role="navigation">
         <div class="btn-expandir">
             <i class="bi bi-list" id="btn-exp"></i>
         </div>
@@ -21,95 +39,92 @@
         <ul>
             <li class="item-menu ativo">
                 <a href="#">
-                    <span class ="icon"><i class="bi bi-house"></i></span>
+                    <span class="icon"><i class="bi bi-house"></i></span>
                     <span class="txt-link">Home</span>
                 </a>
             </li>
             <li class="item-menu">
                 <form action="/menu" method="POST">
                     <a href="">
-                        <span class ="icon"><i class="bi bi-columns-gap"></i></span>
+                        <span class="icon"><i class="bi bi-columns-gap"></i></span>
                         <span class="txt-link">Cadastros</span>
                     </a>
                 </form>
             </li>
             <li class="item-menu">
                 <a href="#">
-                    <span class ="icon"><i class="bi bi-calendar"></i></span>
+                    <span class="icon"><i class="bi bi-calendar"></i></span>
                     <span class="txt-link">Agenda</span>
                 </a>
             </li>
             <li class="item-menu">
                 <a href="#">
-                    <span class ="icon"><i class="bi bi-gear"></i></span>
+                    <span class="icon"><i class="bi bi-gear"></i></span>
                     <span class="txt-link">Configurações</span>
                 </a>
             </li>
             <li class="item-menu">
                 <a href="#">
-                    <span class ="icon"><i class="bi bi-person-circle"></i></span>
+                    <span class="icon"><i class="bi bi-person-circle"></i></span>
                     <span class="txt-link">Conta</span>
                 </a>
             </li>
         </ul>
     </nav>
     
+    <!-- Conteúdo Principal -->
     <section id="principal" class="main style1 special">
-        <!-- <span style="font-size: 30px;cursor: pointer" onclick="abrirNav()"> -->
-            <!-- &#9776; -->
-        <!-- </span> -->
-            <div class="container">
-                <header class="major">
-                    <h2>Gestão Ministerial</h2>
-                </header>
-                <p>Selecione a Opção Desejada para Configuração.</p>
-                <div class="row gtr-150">
-                    <div class="col-4 col-12-medium">
-                        <form action="/vis_dizimista" method="post">
-                        <span class="image fit"><img src="images/pic02.jpg" alt="" /></span>
+        <div class="container">
+            <header class="major">
+                <h2>Gestão Ministerial</h2>
+            </header>
+            <p>Selecione a Opção Desejada para Configuração.</p>
+            <div class="row gtr-150">
+                <div class="col-4 col-12-medium">
+                    <form action="/vis_dizimista" method="post">
+                        <span class="image fit"><img src="images/pic02.jpg" alt="" srcset="images/pic02-small.jpg 600w, images/pic02.jpg 1200w"></span>
                         <h3>Aba de Dizimistas</h3>
                         <p>Selecione para Incluir, alterar ou excluir um membro/dizimista</p>
                         <ul class="actions special">
                             <li><button type="submit">AVANÇAR</button></li>
-                        </form>
                         </ul>
-                    </div>
-                    <div class="col-4 col-12-medium">
-                        <form action="/vis_movimento" method="post">
-                        <span class="image fit"><img src="images/pic03.jpg" alt="" /></span>
+                    </form>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <form action="/vis_movimento" method="post">
+                        <span class="image fit"><img src="images/pic03.jpg" alt="" srcset="images/pic03-small.jpg 600w, images/pic03.jpg 1200w"></span>
                         <h3>Inclusão de Contribuição</h3>
                         <p>Selecione para incluir, alterar e/ou excluir uma movimentação (sugestão - utilizar por culto)</p>
                         <ul class="actions special">
                             <li><button type="submit">AVANÇAR</button></li>
                         </ul>
-                        </form>
-                    </div>
-                    <div class="col-4 col-12-medium">
-                        <form action="/gerar_relatorio" method="post">
-                        <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+                    </form>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <form action="/gerar_relatorio" method="post">
+                        <span class="image fit"><img src="images/pic04.jpg" alt="" srcset="images/pic04-small.jpg 600w, images/pic04.jpg 1200w"></span>
                         <h3>Gerar Relatório</h3>
                         <p>Selecione para gerar o relatório mensal de dizimista - Sintético ou Analítico</p>
                         <ul class="actions special">
                             <li><button type="submit">AVANÇAR</button></li>
                         </ul>
-                        </form>
-                    </div>
-                    <div class="col-4 col-12-medium"> 
-                        <form action="/contas_a_pagar" method="post">
-                        <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+                    </form>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <form action="/contas_a_pagar" method="post">
+                        <span class="image fit"><img src="images/pic04.jpg" alt="" srcset="images/pic04-small.jpg 600w, images/pic04.jpg 1200w"></span>
                         <h3>Contas a Pagar</h3>
                         <p>Cadastro de pagamentos pendentes</p>
                         <ul class="actions special">
                             <li><button type="submit">AVANÇAR</button></li>
                         </ul>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
+        </div>
     </section>
 
-
-<!-- Footer -->
+    <!-- Footer -->
     <section id="footer">
         <ul class="icons">
             <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
@@ -122,18 +137,6 @@
             <li>&copy; DIZWEB</li><li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
         </ul>
     </section>
-
-    <script src="{{ url_for('static', filename = 'js/menu.js') }}"></script>
-    <script src="{{ url_for('static', filename = 'js/expandir.js') }}"></script>
-    <script src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename = 'js/jquery.scrolly.min.js') }}"></script>
-	<script src="{{ url_for('static', filename = 'js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static', filename = 'js/breakpoints.min.js') }}"></script>
-	<script src="{{ url_for('static', filename = 'js/util.js') }}"></script>
-	<script src="{{ url_for('static', filename = 'js/main.js') }}"></script>
-    <script src="{{ url_for('static', filename = 'js/transicao.js') }}"></script>
-
-
 
 </body>
 </html>
