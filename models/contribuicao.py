@@ -22,7 +22,7 @@ def listar_membros():
     conn = obter_conexao()
     cursor = conn.cursor()
     try:
-        cursor.execute("SELECT idMEMBRO, NOME FROM membro")
+        cursor.execute("SELECT idMEMBRO, RI, CARGO, NOME, TELEFONE FROM membro")
         return cursor.fetchall()
     except Exception as e:
         print(f"Erro ao listar membros: {str(e)}")

@@ -42,13 +42,32 @@ def alterar_membro(form):
     conn = obter_conexao()
     cursor = conn.cursor()
     try:
-        cursor.execute("UPDATE membro SET {campo} =  %s WHERE ID = %s OR RI = %s)", 
-                       (campo, id_ou_ri, conteudo))
+        comando = f'UPDATE membro SET {campo} = %s WHERE idMEMBRO = %s OR RI = %s'
+        cursor.execute(comando,(conteudo,id_ou_ri,id_ou_ri))
         conn.commit()
         return True, "Registro alterado com sucesso!"
     except Exception as e:
         conn.rollback()
         return False, f"Erro ao alterar o registro: {str(e)}"
+    finally:
+        cursor.close()
+        conn.close()
+
+
+def excluir_membro(form):
+    exclusao = form.get('exclusao')
+
+    conn = obter_conexao()
+    cursor = conn.cursor()
+
+    try: 
+        comando = f'DELETE FROM membro WHERE idMEMBRO = %s OR RI = %s'
+        cursor.execute(comando,(exclusao,exclusao))
+        conn.commit()
+        return True, "Registro excluido com sucesso!"
+    except Exception as e:
+        conn.rollback()
+        return False, f"Erro ao excluir o registro: {str(e)}"
     finally:
         cursor.close()
         conn.close()

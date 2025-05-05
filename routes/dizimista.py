@@ -29,6 +29,11 @@ def alt_dizimista():
     dados = membro.listar_membros()
     return render_template('dizimista/alt_dizimista.html', dados=dados)
 
+@bp.route('/exc_dizimista', methods=['GET','POST'])
+def exc_dizimista():
+    dados = membro.listar_membros()
+    return render_template('dizimista/exc_dizimista.html', dados=dados)
+
 @bp.route('/inserir', methods=['POST'])
 def inserir_dados():
     sucesso, mensagem = membro.inserir_membro(request.form)
@@ -47,3 +52,11 @@ def alteracao():
     else:
         return redirect(url_for('dizimista.ins_dizimista'))
     
+@bp.route('/exclusao', methods=['POST'])
+def exclusao():
+    sucesso, mensagem = membro.excluir_membro(request.form)
+    flash(mensagem)
+    if sucesso:
+        return redirect(url_for('dizimista.vis_dizimista'))
+    else:
+        return redirect(url_for('dizimista.exc_dizimista'))

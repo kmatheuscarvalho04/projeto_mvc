@@ -3,15 +3,15 @@ from projeto_mvc.models import contribuicao
 
 bp_mov = Blueprint('movimento', __name__)
 
-@bp_mov.route('/vis_movimento')
+@bp_mov.route('/vis_movimento', methods=['GET','POST'])
 def vis_movimento():
     dados = contribuicao.listar_contribuicoes()
-    return render_template('vis_movimento.html', dados=dados)
+    return render_template('movimento/vis_movimento.html', dados=dados)
 
-@bp_mov.route('/ins_movimento')
+@bp_mov.route('/ins_movimento', methods=['GET','POST'])
 def ins_movimento():
     dados = contribuicao.listar_membros()
-    return render_template('ins_movimento.html', dados=dados)
+    return render_template('movimento/ins_movimento.html', dados=dados)
 
 @bp_mov.route('/ins_mov_diz', methods=['POST'])
 def ins_mov_diz():
