@@ -3,6 +3,7 @@ from projeto_mvc.routes.dizimista import bp as dizimista_bp
 from projeto_mvc.routes.movimento import bp_mov as movimento_bp
 from projeto_mvc.routes.contas import bp_contas as contas_bp
 from projeto_mvc.routes.relatorios import bp_relat as relatorios_bp
+from projeto_mvc.routes.administrador import bp_adm as administrador_bp
 
 def create_app():
     app = Flask(__name__)
@@ -11,4 +12,6 @@ def create_app():
     app.register_blueprint(movimento_bp)
     app.register_blueprint(contas_bp)
     app.register_blueprint(relatorios_bp)
+    app.register_blueprint(administrador_bp)
+
     return app

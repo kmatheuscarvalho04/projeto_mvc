@@ -14,6 +14,7 @@ def menu():
     session.setdefault('menu_expandido', False)
     return render_template('base/menu.html', menu_expandido=session['menu_expandido'])
 
+
 @bp.route('/vis_dizimista', methods=['GET','POST'])
 def vis_dizimista():
     dados = membro.listar_membros()

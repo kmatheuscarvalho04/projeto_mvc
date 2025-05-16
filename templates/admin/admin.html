@@ -1,0 +1,24 @@
+{% extends "components/base.html" %}
+
+{% block title %}Administrador - Gestão Ministerial{% endblock %}
+
+{% block content %}
+<header class="major">
+    <h2>Área do Administrador</h2>
+    <p>Selecione a Opção Desejada para Configuração.</p>
+</header>
+<div class="cards-container">
+    <form action="/vis_usuario" method="post" class="card-opcao">
+        <img src="images/pic02.jpg" alt="">
+        <h3>Cadastro de Usuário</h3>
+        <p>Inclusão de Usuário</p>
+        <button type="submit">AVANÇAR</button>
+    </form>
+    <form action="#" method="post" class="card-opcao">
+        <img src="images/pic03.jpg" alt="">
+        <h3>Personalizar</h3>
+        <p>Ajuste de Tema - Tamanho da Fonte</p>
+        <button type="submit">AVANÇAR</button>
+    </form>
+</div>
+{% endblock %}

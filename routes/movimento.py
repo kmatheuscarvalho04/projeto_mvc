@@ -3,10 +3,19 @@ from projeto_mvc.models import contribuicao
 
 bp_mov = Blueprint('movimento', __name__)
 
-@bp_mov.route('/vis_movimento', methods=['GET','POST'])
-def vis_movimento():
+@bp_mov.route('/fil_movimento', methods=['GET','POST'])
+def fil_movimento():
     dados = contribuicao.listar_contribuicoes()
-    return render_template('movimento/vis_movimento.html', dados=dados)
+    return render_template('movimento/filtro_movimento.html', dados = dados)
+
+@bp_mov.route('/filtragem', methods=['POST'])
+def filtrar_movimentos():
+    data_inicio = request.form.get('data_movimento_inicio')
+    data_fim = request.form.get('data_movimento_fim')
+    
+    dados_filtrados = contribuicao.listar_contribuicoes(data_inicio, data_fim)
+
+    return render_template('movimento/vis_movimento.html', dados=dados_filtrados)
 
 @bp_mov.route('/ins_movimento', methods=['GET','POST'])
 def ins_movimento():
@@ -21,3 +30,9 @@ def ins_mov_diz():
         return redirect(url_for('movimento.vis_movimento'))
     else:
         return redirect(url_for('movimento.ins_movimento'))
+
+
+@bp_mov.route('/vis_movimento', methods=['GET'])
+def vis_movimento():
+    dados = contribuicao.listar_contribuicoes()
+    return render_template('movimento/vis_movimento.html', dados=dados)

@@ -5,7 +5,7 @@
 		<title>DIZWEB</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ver_dizimista.css') }}" />
 		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
 	</head>
 <body>
@@ -40,6 +40,11 @@
 
         <form action="/" method="get">
             <button type="submit">Voltar</button>
+        </form>
+
+        <form action="/exportar_sintetico" method="get">
+            <input type="hidden" name="mes_relatorio" value="{{ mes_relatorio }}">
+            <button type="submit">Exportar</button>
         </form>
         
         </div>

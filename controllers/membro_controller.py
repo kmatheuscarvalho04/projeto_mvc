@@ -3,10 +3,6 @@ from models import membro
 
 bp_membro = Blueprint('membro', __name__)
 
-@bp_membro.route('/vis_dizimista')
-def visualizar():
-    dados = membro.listar_membros()
-    return render_template('dizimista/vis_dizimista.html', dados=dados)
 
 @bp_membro.route('/ins_dizimista', methods=['GET', 'POST'])
 def inserir():

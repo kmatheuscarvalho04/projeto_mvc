@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>DIZWEB</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/style_filtragem.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
+	</head>
+<body class="is-preload">
+    
+    <center><h1 id="fil_movimento"> Filtro de movimentos</h1></center>
+
+
+    {% set mensagens = get_flashed_messages() %}
+ {% if mensagens %}
+    <div><center>Atualizado com Sucesso!</center></div>
+ {% endif %}
+    <br> <br> <br>
+   
+    
+    <center>
+
+        <div class="card">
+            <form action="/filtragem" method="post">
+                <label for="alteracao_mov_ini">Do dia:</label>
+                <input type="date" id="data_movimento_inicio" name="data_movimento_inicio" required>
+        
+                <label for="alteracao_mov_fim">Ao dia:</label>
+                <input type="date" id="data_movimento_fim" name="data_movimento_fim" required>
+        
+                <br>
+                <button type="submit">Buscar</button>
+            </form>
+        
+            <form action="/" method="get">
+                <button type="submit">Voltar</button>
+            </form>
+        </div>
+
+
+   <!-- Footer -->
+   <section id="footer">
+    <ul class="icons">
+        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+    <ul class="copyright">
+        <li>&copy; DIZWEB</li><li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
+    </ul>
+</section>
+
+   </center>
+   
+</body>
+</html>

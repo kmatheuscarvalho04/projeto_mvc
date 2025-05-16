@@ -1,15 +1,25 @@
 from projeto_mvc.models.db import obter_conexao
 
-def listar_contribuicoes():
+def listar_contribuicoes(data_inicio=None, data_fim=None):
     conn = obter_conexao()
     cursor = conn.cursor()
     try:
-        query = """
-            SELECT A.idCONTRIBUICAO, A.VALOR, A.DATA, A.MEMBRO_idMEMBRO, B.NOME
-            FROM contribuicao A
-            INNER JOIN membro B ON B.idMEMBRO = A.MEMBRO_idMEMBRO
-        """
-        cursor.execute(query)
+        if data_inicio and data_fim:
+            query = """
+                SELECT A.idCONTRIBUICAO, A.VALOR, A.DATA, A.MEMBRO_idMEMBRO, B.NOME
+                FROM contribuicao A
+                INNER JOIN membro B ON B.idMEMBRO = A.MEMBRO_idMEMBRO
+                WHERE A.DATA BETWEEN %s AND %s
+            """
+            cursor.execute(query, (data_inicio, data_fim))
+        else:
+            query = """
+                SELECT A.idCONTRIBUICAO, A.VALOR, A.DATA, A.MEMBRO_idMEMBRO, B.NOME
+                FROM contribuicao A
+                INNER JOIN membro B ON B.idMEMBRO = A.MEMBRO_idMEMBRO
+            """
+            cursor.execute(query)
+
         return cursor.fetchall()
     except Exception as e:
         print(f"Erro ao listar contribuições: {str(e)}")
@@ -17,6 +27,8 @@ def listar_contribuicoes():
     finally:
         cursor.close()
         conn.close()
+
+# ==================================================================
 
 def listar_membros():
     conn = obter_conexao()

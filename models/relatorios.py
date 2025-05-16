@@ -1,17 +1,22 @@
 from projeto_mvc.models.db import obter_conexao
 
-def relatorio_sintetico(data_inicio, data_fim):
+def relatorio_sintetico(mes_relatorio):
     conn = obter_conexao()
     cursor = conn.cursor()
+
+    ano=(mes_relatorio[:4])
+    mes=(mes_relatorio[-2:])
     try:
         consulta = """
-            SELECT DISTINCT NOME, CARGO, RI
+            SELECT DISTINCT B.NOME, B.CARGO, B.RI
             FROM contribuicao A
             INNER JOIN membro B ON A.MEMBRO_idMEMBRO = B.idMEMBRO
-            WHERE A.DATA BETWEEN %s AND %s
+            WHERE A.DATA LIKE %s
             ORDER BY CARGO DESC
         """
-        cursor.execute(consulta, (data_inicio, data_fim))
+
+        parametro = (f"{ano}-{mes}%",)  # Ex: ('202505%',)
+        cursor.execute(consulta, parametro)
         return cursor.fetchall()
     except Exception as e:
         print(f"Erro no relatório sintético: {str(e)}")
@@ -20,7 +25,7 @@ def relatorio_sintetico(data_inicio, data_fim):
         cursor.close()
         conn.close()
 
-def relatorio_analitico(data_inicio, data_fim):
+def relatorio_analitico(mes_relatorio):
     conn = obter_conexao()
     cursor = conn.cursor()
     try:
@@ -28,10 +33,10 @@ def relatorio_analitico(data_inicio, data_fim):
             SELECT A.DATA, B.CARGO, B.NOME, A.VALOR, B.RI
             FROM contribuicao A
             INNER JOIN membro B ON A.MEMBRO_idMEMBRO = B.idMEMBRO
-            WHERE A.DATA BETWEEN %s AND %s
+            WHERE A.DATA LIKE %s
             ORDER BY A.DATA
         """
-        cursor.execute(consulta, (data_inicio, data_fim))
+        cursor.execute(consulta, (mes_relatorio))
         dados = cursor.fetchall()
 
         total_query = """
@@ -40,7 +45,7 @@ def relatorio_analitico(data_inicio, data_fim):
             INNER JOIN membro B ON A.MEMBRO_idMEMBRO = B.idMEMBRO
             WHERE A.DATA BETWEEN %s AND %s
         """
-        cursor.execute(total_query, (data_inicio, data_fim))
+        cursor.execute(total_query, (mes_relatorio))
         total = cursor.fetchone()
 
         return dados, total
@@ -50,3 +55,5 @@ def relatorio_analitico(data_inicio, data_fim):
     finally:
         cursor.close()
         conn.close()
+
+

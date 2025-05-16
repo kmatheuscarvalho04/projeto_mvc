@@ -1,62 +1,35 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>DIZWEB - Geração de Relatório</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorio.css') }}">
+</head>
+<body>
 
-<html>
-	<head>
-		<title>DIZWEB</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
-		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
-	</head>
-<body class="is-preload">
-    <div class="container">
+    <div id="conteudo-relatorio">
+        <div class="container">
+            <h1>Geração de Relatório</h1>
+            <form action="/relatorio" method="post">
+                <label for="de_data">Selecione o mês de emissão</label>
+                <input type="month" id="mes_relatorio" name="mes_relatorio" required>
 
-    <center><h1>Geração de Relatório</h1>
-    <br>
-    <form action="/relatorio" method="post">
-        <label for="de_data">Selecione o mês de emissão</label>
-            <input type="date" id="de_data" name="de_data">
+                <label for="tipo_relatorio">Selecione o tipo do Relatório</label>
+                <select id="tipo_relatorio" name="tipo_relatorio" required>
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="SINTÉTICO">SINTÉTICO</option>
+                    <option value="ANALÍTICO">ANALÍTICO</option>
+                </select>
 
-        <label for="para_data">Selecione o ano de emissão</label>
-            <input type="date" id="para_data" name="para_data">
+                <button type="submit">Gerar</button>
+            </form>
 
-        <label for="tipo_relatorio">Selecione o tipo do Relatório</label>
-        <select id="tipo_relatorio" name="tipo_relatorio"><br>
-            <option selected disable value id="">Selecione</option><br>
-            <option>SINTÉTICO</option>
-            <option>ANALÍTICO</option>
-            </select>
-            
-        <button type="submit">Gerar</button>
+            <form action="/" method="get">
+                <button type="submit">Voltar</button>
+            </form>
+        </div>
+    </div>
 
-    <form action="/" method="get">
-        <button type="submit">Voltar</button>
-    </form>
-</div>
-
- <!-- Footer -->
- <section id="footer">
-    <ul class="icons">
-        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-        <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-    </ul>
-    <ul class="copyright">
-        <li>&copy; DIZWEB</li><li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
-    </ul>
-</section>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-
-   </center>
 </body>
 </html>

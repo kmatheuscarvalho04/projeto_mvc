@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #f3f3f3;  /* fundo neutro */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1#fil_movimento {
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #222;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 40px 30px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+label {
+    font-size: 1rem;
+    margin: 0 10px;
+    display: inline-block;
+    color: #333;
+}
+
+input[type="date"] {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin: 10px 0;
+    background-color: #fff;
+    color: #333;
+}
+
+button {
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #4fa49a;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3b827c;
+}
+
+#footer {
+    margin-top: 40px;
+    padding: 1em 0;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+ul.icons,
+ul.copyright {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.icons li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 30px 20px;
+    }
+
+    input[type="date"],
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
