@@ -9,48 +9,47 @@
 		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
 	</head>
 	<body class="is-preload">
-    <center>
-    <h1>Inserir Dizimista</h1>
-    {% set mensagens = get_flashed_messages() %}
- {% if mensagens %}
-    <div>Registro Inserido com Sucesso!</div>
- {% endif %}
-    <form action="/inserir" method="post">
-        <label for="cargo"><strong> Cargo:</strong></label>
-        <div class="container">
-                <div class="col-6 col-12-xsmall">
-                        <select id="cargo" name="cargo">
-                            <option selected disable value id="">Selecione</option>
-                            <option>PR.</option>
-                            <option>EV.</option>
-                            <option>MISS.</option>  
-                            <option>PB.</option>
-                            <option>DC.</option> 
-                            <option>DCª.</option> 
-                            <option>COOP.</option> 
-                            <option>COOPª.</option> 
-                        </select>
-            
-            <br>
-            <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-            <br>
-            <label for="idade">RI do Dizimista:</label>
-                <input type="text" id="ri" name="ri" >
-            <br>
-            <label for="telefone">Telefone</label>
-                <input type="text" id="telefone" name="telefone" required>
-            <button type="submit">Inserir</button>
+<center>
+<h1>Inserir Dizimista</h1>
+{% set mensagens = get_flashed_messages() %}
+{% if mensagens %}
+    <div class="msg-sucesso">Registro Inserido com Sucesso!</div>
+{% endif %}
+<div class="form-wrapper">
+    <form action="/inserir" method="post" class="form-dizimista">
+        <div class="form-group">
+            <label for="cargo"><strong>Cargo:</strong></label>
+            <select id="cargo" name="cargo" required>
+                <option selected disabled value="">Selecione</option>
+                <option>PR.</option>
+                <option>EV.</option>
+                <option>MISS.</option>  
+                <option>PB.</option>
+                <option>DC.</option> 
+                <option>DCª.</option> 
+                <option>COOP.</option> 
+                <option>COOPª.</option> 
+            </select>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="ri">RI do Dizimista:</label>
+            <input type="text" id="ri" name="ri">
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Inserir</button>
+            <a href="/vis_dizimista" class="btn-voltar">Voltar</a>
+        </div>
+    </form>
 </div>
-    </form>
-
-    <form action="/vis_dizimista" method="get">
-        <button type="submit">Voltar</button>
-    </form>
-
-    </center>
+</center>
 <!-- Footer -->
 <section id="footer">
     <ul class="icons">
@@ -74,5 +73,4 @@
 <script src="assets/js/main.js"></script>
 
 </body>
-</html>        
-   
+</html>
