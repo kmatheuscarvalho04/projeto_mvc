@@ -55,14 +55,15 @@ def alterar_membro(form):
 
 
 def excluir_membro(form):
-    exclusao = form.get('exclusao')
+    id_ou_ri = form.get('id_ou_ri')
+    # exclusao = form.get('exclusao')
 
     conn = obter_conexao()
     cursor = conn.cursor()
 
     try: 
         comando = f'DELETE FROM membro WHERE idMEMBRO = %s OR RI = %s'
-        cursor.execute(comando,(exclusao,exclusao))
+        cursor.execute(comando,(id_ou_ri,id_ou_ri))
         conn.commit()
         return True, "Registro excluido com sucesso!"
     except Exception as e:

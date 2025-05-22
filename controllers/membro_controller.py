@@ -31,7 +31,7 @@ def alteracao():
     return render_template('vis_dizimista.html')
 
 
-@bp_membro.route('/exc_dizimista', methods=['GET', 'POST'])
+@bp_membro.route('/exclusao', methods=['GET', 'POST'])
 def exclusao():
     if request.method == 'POST':
         membro.excluir_membro(

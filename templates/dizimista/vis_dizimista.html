@@ -12,7 +12,7 @@
 
 <body>
     <div>
-    <center><h1 id="vis_dizimista"> Lista de Dizimista</h1></center>
+    <center><h1 id="vis_dizimista"> Lista de Membros</h1></center>
 
     {% set mensagens = get_flashed_messages() %}
  {% if mensagens %}
@@ -28,24 +28,34 @@
     <div class="table-wrapper">
         <div class="container">
                 <table>
-                <th>ID</th>
-                <th>RI</th>
-                <th>CARGO</th>
-                <th>NOME</th>
-                <th>TELEFONE</th>
-        
-            </tr>
-            {% for linha in dados %}
-                <tr>
-                    <td>{{ linha[0] }}</td>
-                    <td>{{ linha[1] }}</td>
-                    <td>{{ linha[2] }}</td>
-                    <td>{{ linha[3] }}</td>
-                    <td>{{ linha[4] }}</td>
-        
-                </tr>
-            {% endfor %}
-        </table>
+    <tr>
+        <th>ID</th>
+        <th>RI</th>
+        <th>CARGO</th>
+        <th>NOME</th>
+        <th>TELEFONE</th>
+        <th>AÇÕES</th>
+    </tr>
+    {% for linha in dados %}
+        <tr>
+            <td>{{ linha[0] }}</td>
+            <td>{{ linha[1] }}</td>
+            <td>{{ linha[2] }}</td>
+            <td>{{ linha[3] }}</td>
+            <td>{{ linha[4] }}</td>
+            <td>
+                <form action="/alt_dizimista" method="post" style="display:inline;">
+                    <input type="hidden" name="id_ou_ri" value="{{ linha[0] }}">
+                    <button type="submit">Alterar</button>
+                </form>
+                <form action="/exclusao" method="post" style="display:inline;">
+                    <input type="hidden" name="id_ou_ri" value="{{ linha[0] }}">
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
         </div>
     </div>
 
@@ -53,12 +63,6 @@
     <div class="button-group">
         <form action="/ins_dizimista" method="post">
             <button type="submit">Inserir</button>
-        </form>
-        <form action="/alt_dizimista" method="post">
-            <button type="submit">Alterar</button>
-        </form>
-        <form action="/exc_dizimista" method="post">
-            <button type="submit">Excluir</button>
         </form>
         <form action="/" method="get">
             <button type="submit">Voltar</button>

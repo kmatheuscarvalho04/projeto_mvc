@@ -12,76 +12,62 @@
 	<body class="is-preload">
 
 		<center>
-			<h1 id="alt_dizimista">Alteração de Dizimista</h1>
+			<h1 id="alt_dizimista">Alteração de Membro</h1>
 		</center>
 
 		<div class="form-wrapper">
-			<div class="table-wrapper" style="margin-bottom: 32px;">
-				<table>
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>RI</th>
-							<th>CARGO</th>
-							<th>NOME</th>
-							<th>TELEFONE</th>
-							<th>AÇÕES</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for linha in dados %}
-						<tr>
-							<td>{{ linha[0] }}</td>
-							<td>{{ linha[1] }}</td>
-							<td>{{ linha[2] }}</td>
-							<td>{{ linha[3] }}</td>
-							<td>{{ linha[4] }}</td>
-							<td>
-								<form action="/alt_dizimista" method="post" style="display:inline;">
-									<input type="hidden" name="id" value="{{ linha[0] }}">
-									<button type="submit">Alterar</button>
-								</form>
-								<form action="/exc_dizimista" method="post" style="display:inline;">
-									<input type="hidden" name="id" value="{{ linha[0] }}">
-									<button type="submit">Excluir</button>
-								</form>
-							</td>
-						</tr>
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
+			<div class="alt-dizimista-container">
+				<div class="table-wrapper">
+					<table class="dizimista-table">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>RI</th>
+								<th>CARGO</th>
+								<th>NOME</th>
+								<th>TELEFONE</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for linha in dados %}
+							<tr>
+								<td>{{ linha[0] }}</td>
+								<td>{{ linha[1] }}</td>
+								<td>{{ linha[2] }}</td>
+								<td>{{ linha[3] }}</td>
+								<td>{{ linha[4] }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
 
-			<!-- Botão de Inserir fora da tabela -->
-			<div style="margin-top: 20px; text-align: center;">
-				<form action="/ins_dizimista" method="post" style="display:inline;">
-					<button type="submit">Inserir</button>
-				</form>
+				<div class="form-section">
+					<form action="/alteracao" method="post" class="form-dizimista">
+						<div class="form-group">
+							<label for="id_ou_ri">Digite o <b>ID</b> ou o <b>RI</b> do usuário que será alterado:</label>
+							<input type="text" id="id_ou_ri" name="id_ou_ri" required>
+						</div>
+						<div class="form-group">
+							<label for="campo">Selecione o que será alterado:</label>
+							<select id="campo" name="campo" required>
+								<option selected disabled value="">Selecione</option>
+								<option>CARGO</option>
+								<option>NOME</option>
+								<option>RI</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="conteudo">Preencha o novo conteúdo:</label>
+							<input type="text" id="conteudo" name="conteudo" required>
+						</div>
+						<div class="form-actions">
+							<button type="submit" class="btn alterar">Alterar</button>
+							<a href="/vis_dizimista" class="btn voltar">Voltar</a>
+						</div>
+					</form>
+				</div>
 			</div>
-
-			<form action="/alteracao" method="post" class="form-dizimista">
-				<div class="form-group">
-					<label for="id_ou_ri">Digite o <b>ID</b> ou o <b>RI</b> do usuário que será alterado:</label>
-					<input type="text" id="id_ou_ri" name="id_ou_ri" required>
-				</div>
-				<div class="form-group">
-					<label for="campo">Selecione o que será alterado:</label>
-					<select id="campo" name="campo" required>
-						<option selected disabled value="">Selecione</option>
-						<option>CARGO</option>
-						<option>NOME</option>
-						<option>RI</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="conteudo">Preencha o novo conteúdo:</label>
-					<input type="text" id="conteudo" name="conteudo" required>
-				</div>
-				<div class="form-actions">
-					<button type="submit">Alterar</button>
-					<a href="/vis_dizimista" class="btn-voltar">Voltar</a>
-				</div>
-			</form>
 		</div>
 
 		<!-- Footer -->

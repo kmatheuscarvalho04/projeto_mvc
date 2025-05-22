@@ -44,10 +44,8 @@
                 <tfoot id="tfootanalitco">
                     <tr>
                         <th>TOTAL</th>
-                        {% for linhas in dados_totalconsult %}
-                        <td colspan="4">{{ linhas.TOTAL }}</td>
+                        <td colspan="4">{{ total }}</td>
                     </tr>
-                    {% endfor %}
                 </tfoot>
             </table>
         <form action="/" method="get">
