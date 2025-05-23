@@ -14,6 +14,9 @@ def menu():
     session.setdefault('menu_expandido', False)
     return render_template('base/menu.html', menu_expandido=session['menu_expandido'])
 
+@bp.route('/alterar/<id_ou_ri>')
+def rota_alterar(id_ou_ri):
+    return render_template('dizimista/alt_dizimista.html', id_ou_ri=id_ou_ri)
 
 @bp.route('/vis_dizimista', methods=['GET','POST'])
 def vis_dizimista():

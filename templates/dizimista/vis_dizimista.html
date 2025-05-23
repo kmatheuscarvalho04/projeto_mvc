@@ -28,15 +28,18 @@
     <div class="table-wrapper">
         <div class="container">
                 <table>
-    <tr>
-        <th>ID</th>
-        <th>RI</th>
-        <th>CARGO</th>
-        <th>NOME</th>
-        <th>TELEFONE</th>
-        <th>AÇÕES</th>
-    </tr>
-    {% for linha in dados %}
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>RI</th>
+            <th>CARGO</th>
+            <th>NOME</th>
+            <th>TELEFONE</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for linha in dados %}
         <tr>
             <td>{{ linha[0] }}</td>
             <td>{{ linha[1] }}</td>
@@ -44,17 +47,15 @@
             <td>{{ linha[3] }}</td>
             <td>{{ linha[4] }}</td>
             <td>
-                <form action="/alt_dizimista" method="post" style="display:inline;">
+                <a href="{{ url_for('dizimista.rota_alterar', id_ou_ri=linha[0]) }}" class="btn alterar">Alterar</a>
+                <form action="{{ url_for('dizimista.exclusao') }}" method="post" style="display:inline;">
                     <input type="hidden" name="id_ou_ri" value="{{ linha[0] }}">
-                    <button type="submit">Alterar</button>
-                </form>
-                <form action="/exclusao" method="post" style="display:inline;">
-                    <input type="hidden" name="id_ou_ri" value="{{ linha[0] }}">
-                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
+                    <button type="submit" class="btn excluir" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
                 </form>
             </td>
         </tr>
-    {% endfor %}
+        {% endfor %}
+    </tbody>
 </table>
         </div>
     </div>

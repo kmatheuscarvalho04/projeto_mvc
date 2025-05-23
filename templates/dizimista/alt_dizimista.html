@@ -17,7 +17,7 @@
 
 		<div class="form-wrapper">
 			<div class="alt-dizimista-container">
-				<div class="table-wrapper">
+				<!-- <div class="table-wrapper">
 					<table class="dizimista-table">
 						<thead>
 							<tr>
@@ -40,14 +40,22 @@
 							{% endfor %}
 						</tbody>
 					</table>
-				</div>
+				</div> -->
+
+
 
 				<div class="form-section">
 					<form action="/alteracao" method="post" class="form-dizimista">
-						<div class="form-group">
+
+
+					<input type="hidden" id="id_ou_ri" name="id_ou_ri" value="{{ id_ou_ri }}">
+
+
+						<!-- <div class="form-group">
 							<label for="id_ou_ri">Digite o <b>ID</b> ou o <b>RI</b> do usuário que será alterado:</label>
 							<input type="text" id="id_ou_ri" name="id_ou_ri" required>
-						</div>
+						</div> -->
+
 						<div class="form-group">
 							<label for="campo">Selecione o que será alterado:</label>
 							<select id="campo" name="campo" required>
@@ -66,6 +74,7 @@
 							<a href="/vis_dizimista" class="btn voltar">Voltar</a>
 						</div>
 					</form>
+
 				</div>
 			</div>
 		</div>
