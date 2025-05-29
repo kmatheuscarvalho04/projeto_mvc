@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models import contribuicao, membro
+from projeto_mvc.routes import movimento
 
 bp_contribuicao = Blueprint('contribuicao', __name__)
 
@@ -28,8 +29,8 @@ def filtrar_movimentos():
 
 # =====================================================================
 
-@bp_contribuicao.route('/alteracao_mov', methods=['GET', 'POST'])
-def alterar():
+@bp_contribuicao.route('/alt_movimento', methods=['GET', 'POST'])
+def alteracao_mov():
     if request.method == 'POST':
         contribuicao.alterar_contribuicao(
             request.form['id_movimentacao'],
@@ -38,5 +39,5 @@ def alterar():
         )
         flash("Movimento alterado com sucesso!")
         return redirect(url_for('contribuicao.visualizar'))
-    membros = membro.listar_membros()
-    return render_template('movimento/ins_movimento.html', dados=membros)
+    movimentos = contribuicao.listar_contribuicoes()
+    return render_template('movimento/vis_movimento.html', dados=movimentos)

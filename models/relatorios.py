@@ -49,8 +49,9 @@ def relatorio_analitico(mes_relatorio):
             INNER JOIN membro B ON A.MEMBRO_idMEMBRO = B.idMEMBRO
             WHERE A.DATA LIKE %s
         """
+        
         cursor.execute(total_query, parametro)
-        total = cursor.fetchone()
+        total = cursor.fetchall()
 
         return dados, total
     except Exception as e:

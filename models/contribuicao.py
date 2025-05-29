@@ -73,7 +73,7 @@ def inserir_contribuicao(form):
 def alterar_contribuicao(form):
     id_movimentacao = form.get('id_movimentacao')
     data_mov_correto = form.get('data_mov_correto')
-    valor_mov_correto = form.get('conteudo')
+    valor_mov_correto = form.get('valor_mov_correto')
 
     conn = obter_conexao()
     cursor = conn.cursor()

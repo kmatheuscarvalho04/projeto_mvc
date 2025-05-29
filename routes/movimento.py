@@ -49,3 +49,13 @@ def exc_movimento():
         return redirect(url_for('movimento.vis_movimento'))
     else:
         return redirect(url_for('movimento.alt_movimento'))
+
+
+@bp_mov.route('/alt_movimento', methods=['GET','POST'])
+def alt_movimento():
+    sucesso, mensagem = contribuicao.listar_contribuicoes(request.form)
+    flash(mensagem)
+    if sucesso:
+        return redirect(url_for('movimento.vis_movimento'))
+    else:
+        return redirect(url_for('movimento.alt_movimento'))
