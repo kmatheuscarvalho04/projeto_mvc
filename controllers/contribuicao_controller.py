@@ -24,3 +24,19 @@ def filtrar_movimentos():
     
     dados_filtrados = contribuicao.listar_contribuicoes(data_inicio, data_fim)
     return render_template('movimento/vis_movimento.html', dados=dados_filtrados)
+
+
+# =====================================================================
+
+@bp_contribuicao.route('/alteracao_mov', methods=['GET', 'POST'])
+def alterar():
+    if request.method == 'POST':
+        contribuicao.alterar_contribuicao(
+            request.form['id_movimentacao'],
+            request.form['data_mov_correto'],
+            request.form['valor_mov_correto']
+        )
+        flash("Movimento alterado com sucesso!")
+        return redirect(url_for('contribuicao.visualizar'))
+    membros = membro.listar_membros()
+    return render_template('movimento/ins_movimento.html', dados=membros)

@@ -4,8 +4,8 @@ def relatorio_sintetico(mes_relatorio):
     conn = obter_conexao()
     cursor = conn.cursor()
 
-    ano=(mes_relatorio[:4])
-    mes=(mes_relatorio[-2:])
+    ano = mes_relatorio[:4]
+    mes = mes_relatorio[-2:]
     try:
         consulta = """
             SELECT DISTINCT B.NOME, B.CARGO, B.RI
@@ -29,8 +29,8 @@ def relatorio_analitico(mes_relatorio):
     conn = obter_conexao()
     cursor = conn.cursor()
 
-    ano=(mes_relatorio[:4])
-    mes=(mes_relatorio[-2:])
+    ano = mes_relatorio[:4]
+    mes = mes_relatorio[-2:]
     try:
         consulta = """
             SELECT A.DATA, B.CARGO, B.NOME, A.VALOR, B.RI
@@ -59,3 +59,11 @@ def relatorio_analitico(mes_relatorio):
     finally:
         cursor.close()
         conn.close()
+
+# Remova o trecho abaixo deste arquivo!
+# dados, total = relatorio_analitico(mes_relatorio)
+# return render_template(
+#     'relatorio/vis_analitico.html',
+#     dados=dados,
+#     total=total[0] if total and total[0] is not None else 0
+# )

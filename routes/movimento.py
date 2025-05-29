@@ -36,3 +36,16 @@ def ins_mov_diz():
 def vis_movimento():
     dados = contribuicao.listar_contribuicoes()
     return render_template('movimento/vis_movimento.html', dados=dados)
+
+@bp_mov.route('/alterarmov/<id_movimento>')
+def rota_alterarmov(id_movimento):
+    return render_template('movimento/alt_movimento.html', id_movimento=id_movimento)
+
+@bp_mov.route('/exc_movimento', methods=['GET','POST'])
+def exc_movimento():
+    sucesso, mensagem = contribuicao.excluir_movimentacao(request.form)
+    flash(mensagem)
+    if sucesso:
+        return redirect(url_for('movimento.vis_movimento'))
+    else:
+        return redirect(url_for('movimento.alt_movimento'))

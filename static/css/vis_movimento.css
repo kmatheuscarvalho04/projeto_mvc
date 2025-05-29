@@ -1,0 +1,145 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.container {
+    flex: 1 0 auto; /* Faz o conteúdo crescer e empurra o footer para baixo */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 0;
+    width: 100%;
+}
+
+h1, table {
+    font-family: 'Arial', sans-serif;
+}
+
+#titulo_vis_movimento {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.table-wrapper {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+}
+
+th, td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+tr:hover {
+    background-color: #f1f7ff;
+}
+
+form button, .btn {
+    padding: 8px 18px;
+    font-size: 1rem;
+    margin: 4px 2px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+form button:hover, .btn:hover {
+    background-color: #0056b3;
+}
+
+.btn.alterar {
+    background-color: #28a745;
+}
+
+.btn.alterar:hover {
+    background-color: #1e7e34;
+}
+
+.btn.excluir {
+    background-color: #dc3545;
+}
+
+.btn.excluir:hover {
+    background-color: #a71d2a;
+}
+
+#footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; /* Empurra o footer para o final da página */
+}
+
+#footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#footer ul.icons {
+    margin-bottom: 10px;
+}
+
+#footer .icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+#footer .icons a:hover {
+    opacity: 0.7;
+}
+
+#footer .copyright {
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+    .container, .table-wrapper {
+        padding: 8px;
+    }
+    th, td {
+        padding: 8px 6px;
+        font-size: 0.95rem;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+}

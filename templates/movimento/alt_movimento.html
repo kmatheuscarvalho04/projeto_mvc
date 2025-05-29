@@ -5,7 +5,7 @@
 		<title>DIZWEB</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ver_dizimista.css') }}" />
 		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
 	</head>
 <body class="is-preload">
@@ -21,7 +21,8 @@
    
     
     <center>
-        <div class="container">
+        
+        <!-- <div class="container">
             <table>
             <tr>
                 <th>ID</th>
@@ -44,20 +45,26 @@
             {% endfor %}
             </table>
             </div>
-        </div>
+        </div> -->
 
-        <div class="container">
-            <form action="/alteracao_mov" method="post">
-                <center><label for="alteracao_mov">Digite o número do mês que será usado:</label>
-                <input type="text" id="mes_movimento" name="mes_movimento" required>
-                <button type="submit">Buscar</button></center>
-                </div>
+        <div class="form-section">
+            <form action="/alteracao_mov" method="post" class="form-dizimista">
+                
+            <input type="hidden" id = "id_movimentacao" name = "id_movimentacao" value="{{ id_movimentacao}}"   >
+            
+            <div class="form-group">
+                <label for="valor_mov_correto">Digite o Valor Correto</label>
+                <input type="valor_mov_correto" min="0.00" max="10000.00" step="0.01" id="valor_mov_correto" name="valor_mov_correto" required/>
+
+                <label for="data_mov_correto">Informe a data correta:</label>
+                <input type="date" id="data_mov_correto" name="data_mov_correto">
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn alterar">Alterar</button>
+                <a href="/vis_movimento" class="btn voltar">Voltar</a>
+            </div>
             </form>
         </div>
-
-        <form action="/vis_movimento" method="get">
-            <button type="submit">Voltar</button>
-        </form>
 
    <!-- Footer -->
    <section id="footer">

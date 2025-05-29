@@ -5,36 +5,33 @@
 		<title>DIZWEB</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/ver_dizimista.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/vis_movimento.css') }}" />
 		<noscript><link rel="stylesheet" href="{{ url_for('static', filename = 'css/noscript.css') }}" /></noscript>
 	</head>
 	<body class="is-preload">
-    
-<body>
-    <div>
-    <center><h1 id="titulo_vis_movimento"> Visualização de movimentos</h1></center>
 
-    {% set mensagens = get_flashed_messages() %}
- {% if mensagens %}
-    <div><center>Atualizado com Sucesso!</center></div>
- {% endif %}
-    <br> <br> <br>
-   
-   
-   
-    </div>
-    
-    <center>
+    <div class="container">
+        <h1 id="titulo_vis_movimento">Visualização de movimentos</h1>
+
+        {% set mensagens = get_flashed_messages() %}
+        {% if mensagens %}
+            <div><center>Atualizado com Sucesso!</center></div>
+        {% endif %}
+        <br><br>
+
         <div class="table-wrapper">
-            <div class="container">
-                <table>
-                    <th>ID</th>
-                    <th>ID_DIZIMISTA</th>
-                    <th>VALOR</th>
-                    <th>DATA</th>
-                    <th>NOME</th>
-            
-                </tr>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID_DIZIMISTA</th>
+                        <th>VALOR</th>
+                        <th>DATA</th>
+                        <th>NOME</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {% for linha in dados %}
                     <tr>
                         <td>{{ linha[0] }}</td>
@@ -42,51 +39,46 @@
                         <td>{{ linha[1] }}</td>
                         <td>{{ linha[2] }}</td>
                         <td>{{ linha[4] }}</td>
+                        <td>
+                            <a href="{{ url_for('movimento.rota_alterarmov', id_movimento=linha[0]) }}" class="btn alterar">Alterar</a>
+                            <form action="{{ url_for('movimento.exc_movimento') }}" method="post" style="display:inline;">
+                                <input type="hidden" name="id_dizimista" value="{{ linha[0] }}">
+                                <button type="submit" class="btn excluir" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
-                </table>
-
-                <form action="/ins_movimento" method="post">
-                    <button type="submit">Inserir</button>
-                </form>
-
-                <form action="/alt_movimento" method="post">
-                    <button type="submit">Alterar</button>
-                </form>
-
-                <form action="/exc_movimento" method="post">
-                    <button type="submit">Excluir</button>
-                </form>
-
-                <form action="/" method="get">
-                    <button type="submit">Voltar</button>
-                </form>
-                
-            </div>
+                </tbody>
+            </table>
+            <form action="/ins_movimento" method="post" style="display:inline;">
+                <button type="submit">Inserir</button>
+            </form>
+            <form action="/" method="get" style="display:inline;">
+                <button type="submit">Voltar</button>
+            </form>
         </div>
+    </div>
 
-   <!-- Footer -->
-   <section id="footer">
-    <ul class="icons">
-        <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-        <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-        <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-        <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-    </ul>
-    <ul class="copyright">
-        <li>&copy; DIZWEB</li><li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
-    </ul>
-</section>
+    <section id="footer">
+        <ul class="icons">
+            <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+            <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; DIZWEB</li>
+            <li>Design: <a href="http://html5up.net">Kaique Carvalho®</a></li>
+        </ul>
+    </section>
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-</center>
-
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename = 'assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/jquery.scrolly.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/main.js') }}"></script>
 </body>
 </html>

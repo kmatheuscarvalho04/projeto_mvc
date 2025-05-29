@@ -13,6 +13,8 @@ def listar_membros():
         cursor.close()
         conn.close()
 
+# ==================================================================
+
 def inserir_membro(form):
     cargo = form.get('cargo')
     nome = form.get('nome')
@@ -33,6 +35,7 @@ def inserir_membro(form):
         cursor.close()
         conn.close()
 
+# ==================================================================
 
 def alterar_membro(form):
     id_ou_ri = form.get('id_ou_ri')
@@ -53,6 +56,7 @@ def alterar_membro(form):
         cursor.close()
         conn.close()
 
+# ==================================================================
 
 def excluir_membro(form):
     id_ou_ri = form.get('id_ou_ri')

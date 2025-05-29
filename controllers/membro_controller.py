@@ -30,13 +30,3 @@ def alteracao():
         return redirect(url_for('membro.visualizar'))
     return render_template('vis_dizimista.html')
 
-
-@bp_membro.route('/exclusao', methods=['GET', 'POST'])
-def exclusao():
-    if request.method == 'POST':
-        membro.excluir_membro(
-            request.form['exclusao'],
-        )
-        flash("Registro excluido com sucesso!")
-        return redirect(url_for('membro.visualizar'))
-    return render_template('vis_dizimista.html')

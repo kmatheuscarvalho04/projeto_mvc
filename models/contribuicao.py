@@ -43,6 +43,8 @@ def listar_membros():
         cursor.close()
         conn.close()
 
+# ==================================================================
+
 def inserir_contribuicao(form):
     id_dizimista = form.get('id_dizimista')
     data = form.get('data')
@@ -64,3 +66,46 @@ def inserir_contribuicao(form):
     finally:
         cursor.close()
         conn.close()
+
+
+# ==================================================================
+
+def alterar_contribuicao(form):
+    id_movimentacao = form.get('id_movimentacao')
+    data_mov_correto = form.get('data_mov_correto')
+    valor_mov_correto = form.get('conteudo')
+
+    conn = obter_conexao()
+    cursor = conn.cursor()
+    try:
+        comando = f'UPDATE contribuicao SET DATA = %s, VALOR = %s WHERE idCONTRIBUICAO = %s'
+        cursor.execute(comando, (data_mov_correto, valor_mov_correto, id_movimentacao))
+        conn.commit()
+        return True, "Contribuição alterada com sucesso!"
+    except Exception as e:
+        conn.rollback()
+        return False, f"Erro ao alterar a contribuição: {str(e)}"
+    finally:
+        cursor.close()
+        conn.close()
+
+
+# ==================================================================
+
+def excluir_movimentacao(form):
+    id_dizimista = form.get('id_dizimista')
+
+    conn = obter_conexao()
+    cursor = conn.cursor()
+    try:
+        comando = 'DELETE FROM contribuicao WHERE idCONTRIBUICAO = %s'
+        cursor.execute(comando, (id_dizimista,))
+        conn.commit()
+        return True, "Movimentação excluída com sucesso!"
+    except Exception as e:
+        conn.rollback()
+        return False, f"Erro ao excluir a movimentação: {str(e)}"
+    finally:
+        cursor.close()
+        conn.close()
+
